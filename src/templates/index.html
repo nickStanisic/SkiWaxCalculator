@@ -10,11 +10,68 @@
     <div class="text-center">
         <h1 class="mt-5">Hello</h1>
         <form action="/" method="post">
-            <input type="datetime" id="start" name="start">
-            <input type="datetime" id="end" name="end">
-            <input type="range" id="temperature" name="temperature">
+            <input type="text" id="lowTemp" name="lowTemp">
+            <input type="text" id="highTemp" name="highTemp">
+            <select class="form-select" aria-label="Default select example" name="startTime">
+                <option selected>Open this select menu</option>
+                <option value="0">12:00am</option>
+                <option value="1">3:00am</option>
+                <option value="2">6:00am</option>
+                <option value="3">9:00am</option>
+                <option value="4">12:00pm</option>
+                <option value="5">3:00pm</option>
+                <option value="6">6:00pm</option>
+                <option value="7">9:00pm</option>
+              </select>
+              <select class="form-select" aria-label="Default select example" name="endTime">
+                <option selected>Open this select menu</option>
+                <option value="0">12:00am</option>
+                <option value="1">3:00am</option>
+                <option value="2">6:00am</option>
+                <option value="3">9:00am</option>
+                <option value="4">12:00pm</option>
+                <option value="5">3:00pm</option>
+                <option value="6">6:00pm</option>
+                <option value="7">9:00pm</option>
+              </select>
+              <select class="form-select" aria-label="Default select example" name="startDate">
+                <option selected>Open this select menu</option>
+                <option value="0">today</option>
+                <option value="8">tomorrow</option>
+                <option value="16">2 days</option>
+                <option value="24">3 days</option>
+                <option value="32">4 days</option>
+              </select>
+              <select class="form-select" aria-label="Default select example" name="endDate">
+                <option selected>Open this select menu</option>
+                <option value="0">today</option>
+                <option value="8">tomorrow</option>
+                <option value="16">2 days</option>
+                <option value="24">3 days</option>
+                <option value="32">4 days</option>
+              </select>
             <button>Find</button>
         </form>
+        {% if data %}
+        <div class="container text-center">
+            {% for list in data %}
+                <div class="row">
+                    {% for item in list %}
+                        {% if item == False %}
+                            <div class="col">
+                                False
+                            </div>
+                        {% endif %}
+                        {% if item == True %}
+                            <div class="col">
+                                True
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
