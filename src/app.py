@@ -9,12 +9,6 @@ app = Flask(__name__)
 def index():
     data = None
     if request.method == 'POST':
-        lowTemp = 0
-        highTemp = 0
-        startTime = 0
-        endTime = 0
-        startDate = 0
-        endDate = 0
         lowTemp = request.form['lowTemp']
         highTemp = request.form['highTemp']
         startTime = request.form['startTime']

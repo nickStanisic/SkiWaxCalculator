@@ -21,8 +21,8 @@ def get_temperatures_for_colorado(start, end, lowTemp, highTemp):
             data = get_weather_data(i,j,api_key,"imperial")
             withinRange = True
             for k in range(start, end):
-                currentTemp = data.get('list')[i].get('main').get('temp')
-                if currentTemp < lowTemp or currentTemp > highTemp:
+                currentTemp = data.get('list')[k].get('main').get('temp')
+                if currentTemp < float(lowTemp) or currentTemp > float(highTemp):
                     withinRange = False
             temps_for_lat.append(withinRange)
         colorado_temperature_list.append(temps_for_lat)
@@ -30,11 +30,9 @@ def get_temperatures_for_colorado(start, end, lowTemp, highTemp):
 
 def calculatePoints(lowTemp, highTemp, startTime, endTime, startDate, endDate):
     #range determined by date/time
-    print(lowTemp, highTemp, startTime, startDate, endTime, endDate)
     start = int(startDate) + int(startTime)
     end = int(endTime) + int(endDate) + 1
     returnData = get_temperatures_for_colorado(start,end, lowTemp, highTemp)
-    print(returnData)
     return returnData
 
 
